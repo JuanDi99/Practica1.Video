@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .vid{
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .texto{
+            position: absolute;  
+            top: 90%;
+            left: 10%;
+            color: rgb(231, 10, 10);
+            text-shadow: -1px -1px 0 #ff0000, 1px -1px 0 #ff0000, -1px 1px 0 #3700ff, 1px 1px 0 #6f00ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="ctnbox">
+        <video id="vid" class="vid" src="./video/cat-66004_J28wsFKk.mp4" type="video/mp4" autoplay loop muted></video>
+    </div>
+    <div class="texto">
+        <h1 id="btnTxt">Casco Juan Diego</h1>
+        <br>
+        <button onclick="cambiar_video()">Cambiar video</button>
+    </div>
+    <script>
+        var count = 0;
+        var countxt = 0;
+        var btntxt = document.getElementById('btnTxt');
+        btntxt.addEventListener('click', () => {
+            if(countxt % 2 == 0){
+                btntxt.innerHTML = 'perro'
+            }else{
+                btntxt.innerHTML = 'Casco Juan Diego'
+            }
+            countxt++;
+        })
+        document.getElementById('vid').play();
+        
+        function cambiar_video() {
+            var video = document.getElementById('vid')
+            video.pause();
+            if(count % 2 == 0){
+                video.src = './video/perro.mp4'
+            }else{
+                video.src = './video/cat-66004_J28wsFKk.mp4'
+            }
+            count++;
+            video.load();
+            video.play();
+        };
+    </script>
+    
+</body>
+</html>
